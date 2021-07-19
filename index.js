@@ -31,18 +31,18 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   let newUserChannel = newMember.channelID;
   let oldUserChannel = oldMember.channelID;
 
-  //process.env.USERVOICE = Tag da pessoa que entra no canal de voz
-  //process.env.USERDM = ID da pessoa que recebe a DM
+  //process.env.USER_VOICE = Tag da pessoa que entra no canal de voz
+  //process.env.USER_DM = ID da pessoa que recebe a DM
 
   if (newMember.member.user.tag == process.env.USER_VOICE) {
     if(!oldUserChannel && newUserChannel !== oldUserChannel) {
-      client.users.cache.get(process.env.USER_DM).send(`${newMember.member.user.tag} entrou no canal de voz ${newMember.channel.name}.`/*'Alguem entrou em um canal de voz UwU'*/);
+      client.users.cache.get(process.env.USER_DM).send(`${newMember.member.user.tag} entrou no canal de voz ${newMember.channel.name}.`);
     }
     else if(!newUserChannel && newUserChannel !== oldUserChannel) {
-      client.users.cache.get(process.env.USER_DM).send(`${oldMember.member.user.tag} saiu do canal de voz ${oldMember.channel.name}.`/*'Alguem entrou em um canal de voz UwU'*/);
+      client.users.cache.get(process.env.USER_DM).send(`${oldMember.member.user.tag} saiu do canal de voz ${oldMember.channel.name}.`);
     }
     else if(newUserChannel !== oldUserChannel) {
-      client.users.cache.get(process.env.USER_DM).send(`${newMember.member.user.tag} mudou para o canal de voz ${newMember.channel.name}.`/*'Alguem entrou em um canal de voz UwU'*/);
+      client.users.cache.get(process.env.USER_DM).send(`${newMember.member.user.tag} mudou para o canal de voz ${newMember.channel.name}.`);
     }
   }
 });
